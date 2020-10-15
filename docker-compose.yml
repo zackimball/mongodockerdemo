@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+    mongodb:
+        image: 'mongo'
+        container_name: 'DemoData'
+        environment:
+            MONGO_INITDB_DATABASE: admin
+            MONGO_INITDB_ROOT_USERNAME: someSuperUserName
+            MONGO_INITDB_ROOT_PASSWORD: someSuperAwesomePassword
+        volumes:
+            - ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js
+            - ./mongo-volume:/data/db
+        ports:
+            - '27020:27017'
